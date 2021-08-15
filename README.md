@@ -1,6 +1,6 @@
 # GetKaguyaXY
 
-用於Atelier kaguya
+用於 Atelier kaguya 系列作，計算偏移座標表方便做CG及立繪等的圖片合成.
 
 在解出 *.alp檔後，用此程式將可計算出 XY Offset list
 
