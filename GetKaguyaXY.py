@@ -1,3 +1,4 @@
+import csv
 import os
 import pathlib
 
@@ -21,11 +22,11 @@ xylist = ""
 for i in Alp:
 	position = []
 	
-	with open(i, 'rb') as f:
+	with open(i, "rb") as f:
 		f.seek(4)
-		position.append(int.from_bytes(f.read(1), byteorder='big'))
+		position.append(int.from_bytes(f.read(2), byteorder="little"))
 		f.seek(8)
-		position.append(int.from_bytes(f.read(1), byteorder='big'))
+		position.append(int.from_bytes(f.read(2), byteorder="little"))
 	
 	xylist = xylist + str(i).replace(f"{Root}\\","").replace("\\","/") + f" : {str(position[0])}, {str(position[1])}\n"
 
