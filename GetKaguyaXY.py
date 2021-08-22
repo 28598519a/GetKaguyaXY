@@ -1,4 +1,3 @@
-import csv
 import os
 import pathlib
 
@@ -19,6 +18,7 @@ Alp = pathlib.Path(Root).glob("**\*.alp")
 
 # 取得XY座標
 xylist = ""
+xylistauto = ""
 for i in Alp:
 	position = []
 	
@@ -29,8 +29,12 @@ for i in Alp:
 		position.append(int.from_bytes(f.read(2), byteorder="little"))
 	
 	xylist = xylist + str(i).replace(f"{Root}\\","").replace("\\","/") + f" : {str(position[0])}, {str(position[1])}\n"
+	xylistauto = xylistauto + os.path.basename(i).split('.')[0] + f",{str(position[0])},{str(position[1])}\n"
 
 # 存座標表為txt
 with open("AlpXY_Offset.txt", "w") as txt:
 	txt.write(xylist)
+
+with open("AlpXY_Offset(Auto).txt", "w") as txt:
+	txt.write(xylistauto)
 
